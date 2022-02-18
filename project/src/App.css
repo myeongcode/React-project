@@ -48,3 +48,8 @@
   padding: 20px;
   background-color: #eee;
 }
+
+.title-hover:hover {
+  cursor: pointer;
+  color :rgb(255, 140, 0);
+}
