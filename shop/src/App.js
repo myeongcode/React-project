@@ -13,6 +13,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 function App() {
   
   let [shoesName, setShoesName] = useState(Data);
+  let [stock, setStock] = useState([4,6,10]);
 
   return (
     <div className="App">
@@ -78,10 +79,12 @@ function App() {
               }
             </div>
           </div>
+          
           <button className="btn btn-primary" onClick={() => {
+            
             axios.get('https://codingapple1.github.io/shop/data2.json')
             .then((result) => { 
-              <div>안녕하세요</div>
+              setShoesName([...shoesName, ...result.data])
             })
             .catch(() => { 
               console.log('실패')
@@ -104,8 +107,6 @@ function App() {
   );
 }
 
-
-
 function Card(props) {
   return (
     <div className='col-md-4'>
@@ -116,5 +117,7 @@ function Card(props) {
     </div>
   )
 }
+
+
 
 export default App;

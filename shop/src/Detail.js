@@ -78,12 +78,21 @@ function Detail(props) {
                 <h4 className="pt-5">{ itemId.title }</h4>
                 <p>{ itemId.content }</p>
                 <p>￦{ itemId.price }</p>
+
+
+
                 <button className="btn btn-danger">주문하기</button> 
                 <button className="btn btn-danger" onClick={() => { history.push('/') }}>뒤로가기</button> 
                 </div>
             </div>
             
         </div> 
+    )
+}
+
+function StockAlert() {
+    return (
+        
     )
 }
 
