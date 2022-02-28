@@ -5,6 +5,7 @@ import { Navbar, Container, Nav,Carousel, NavDropdown, Button } from 'react-boot
 import './App.css';
 import Data from './data.js';
 import Detail from './Detail.js';
+import axios from 'axios';
 
 
 import { Link, Route, Switch } from 'react-router-dom';
@@ -15,13 +16,12 @@ function App() {
 
   return (
     <div className="App">
-      
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Myeong's Shop</Navbar.Brand>
+          <Navbar.Brand href="/">Myeong's Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link> <Link to="/">Home</Link> </Nav.Link>
-            <Nav.Link> <Link to="/Detail">Detail</Link> </Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/detail/0">Detail</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Container>
@@ -78,10 +78,21 @@ function App() {
               }
             </div>
           </div>
+          <button className="btn btn-primary" onClick={() => {
+            axios.get('https://codingapple1.github.io/shop/data2.json')
+            .then((result) => { 
+              <div>안녕하세요</div>
+            })
+            .catch(() => { 
+              console.log('실패')
+            })
+          }}>더보기</button>
         </Route>
 
-        <Route path="/detail">
-          <Detail/>
+
+
+        <Route path="/detail/:id">
+          <Detail shoesName={shoesName} />
         </Route>
 
         <Route path="/:id">
@@ -98,7 +109,7 @@ function App() {
 function Card(props) {
   return (
     <div className='col-md-4'>
-      <img src={ "https://codingapple1.github.io/shop/shoes"+ (props.i + 1) + ".jpg" } alt="" width="100%"/>
+      <img src={ "https://codingapple1.github.io/shop/shoes"+ (props.i + 1) + ".jpg" } width="100%"/>
       <h4>{ props.shoesName.title }</h4>
       <p>{ props.shoesName.content }</p>
       <p>￦{ props.shoesName.price }</p>

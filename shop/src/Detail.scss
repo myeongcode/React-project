@@ -1,0 +1,48 @@
+@import './_reset.scss';
+
+$maincolor : #ff0000;
+
+.red {
+    color: $maincolor;
+}
+
+@mixin alertform() {
+    background-color: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+}
+
+.detail-alert {
+    @include alertform()
+}
+
+.detail-alert-yellow {
+    @extend .detail-alert;
+    background-color: #ffe591;
+}
+
+
+
+.detail-alert p {
+    margin-bottom: 0;
+}
+
+/* div.container h4 {
+    color: blue;
+}
+
+div.container p {
+    color: green;
+}
+ */
+div.container {
+    h4 {
+        color:blue;
+    }
+    p {
+        color: green;
+    }
+}
